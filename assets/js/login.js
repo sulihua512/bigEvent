@@ -41,13 +41,34 @@ $(function () {
       success: function (res) {
         // 注册失败
         if (res.status !== 0) {
-          return console.log(res.message)
+          return layer.msg('注册失败');
         }
         // 注册成功，跳转到登录界面
         $('#link-login').click()
       }
     })
   })
-
-
+  // 监听登录表单的提交事件
+  $('#form-login').on('submit', function (e) {
+    // 1. 阻止表单的默认提交行为
+    e.preventDefault();
+    // 2. 发起Ajax请求
+    $.ajax({
+      type: 'POST',
+      // 指定请求的 URL 地址
+      url: 'http://www.liulongbin.top:3007/api/login',
+      data: $(this).serialize(),
+      success: function (res) {
+        console.log(res);
+        // 登录失败
+        if (res.status != 0) {
+          return layer.msg('登录失败');
+        }
+        // 提示用户登录成功
+        layer.msg('登录成功')
+        // 登录成功，跳转到首页
+        location.href = "/index.html"
+      }
+    })
+  })
 })
