@@ -27,4 +27,27 @@ $(function () {
     }
   })
 
+  // 监听注册表单的提交事件
+  $('#form-reg').on('submit', function (e) {
+    // 1. 阻止表单的默认提交行为
+    e.preventDefault();
+    // 2. 发起Ajax请求
+    $.ajax({
+      // 指定请求的方式
+      type: 'POST',
+      // 指定请求的 URL 地址
+      url: 'http://www.liulongbin.top:3007/api/reguser',
+      data: $(this).serialize(),
+      success: function (res) {
+        // 注册失败
+        if (res.status !== 0) {
+          return console.log(res.message)
+        }
+        // 注册成功，跳转到登录界面
+        $('#link-login').click()
+      }
+    })
+  })
+
+
 })
