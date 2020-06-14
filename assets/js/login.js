@@ -36,7 +36,7 @@ $(function () {
       // 指定请求的方式
       type: 'POST',
       // 指定请求的 URL 地址
-      url: 'http://www.liulongbin.top:3007/api/reguser',
+      url: '/api/reguser',
       data: $(this).serialize(),
       success: function (res) {
         // 注册失败
@@ -56,16 +56,18 @@ $(function () {
     $.ajax({
       type: 'POST',
       // 指定请求的 URL 地址
-      url: 'http://www.liulongbin.top:3007/api/login',
+      url: '/api/login',
       data: $(this).serialize(),
       success: function (res) {
-        console.log(res);
+        // console.log('登陆信息', res);
         // 登录失败
         if (res.status != 0) {
           return layer.msg('登录失败');
         }
         // 提示用户登录成功
         layer.msg('登录成功')
+        // 保存token到本地
+        localStorage.setItem('token', res.token)
         // 登录成功，跳转到首页
         location.href = "/index.html"
       }
