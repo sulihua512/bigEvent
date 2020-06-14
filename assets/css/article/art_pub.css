@@ -1,0 +1,37 @@
+body,
+html{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #f2f3f5;
+    padding: 15px;
+}
+
+.cover-box{
+    display: flex;
+}
+/* 设置裁剪区域的样式 */
+.cropper-box {
+    width: 400px;
+    height: 280px;
+    background-color: cyan;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.img-preview{
+    width: 200px;
+    height: 140px;
+    background-color: gray;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+/* 设置 preview-box 区域的的样式 */
+.preview-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+}
+  
