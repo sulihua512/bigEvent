@@ -44,7 +44,7 @@ $(function () {
             type: 'GET',
             url: '/my/userinfo',
             success: function (res) {
-                console.log(res.data);
+                // console.log(res.data);
 
                 if (res.status !== 0) {
                     return layer.msg('获取用户信息失败！')
